@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
-import { cleanEnv, num, str } from 'envalid';
+import { cleanEnv, num, str, bool } from 'envalid';
 
-dotenv.config();
+dotenv.config({path: '.env'});
 
 export default cleanEnv(process.env, {
   MORALIS_API_KEY: str({
@@ -23,6 +23,10 @@ export default cleanEnv(process.env, {
   MASTER_KEY: str({
     desc: 'A secret key of your choice (keep this secret)',
   }),
+  APP_NAME: str({
+    desc: 'A name for your app',
+    default: 'Moralis Server',
+  }),
   APPLICATION_ID: str({
     desc: 'An id for your app, can be anything you want',
     default: 'APPLICATION_ID',
@@ -31,7 +35,10 @@ export default cleanEnv(process.env, {
     desc: 'Referenece to your server URL. Replace this when your app is hosted',
     devDefault: 'http://localhost:1337/server',
   }),
-
+  SERVER_ENDPOINT: str({
+    desc: 'Server endpoint for your parse-server',
+    default: 'server',
+  }),
   REDIS_CONNECTION_STRING: str({
     desc: 'Connection string for your redis instance in the format of redis://<host>:<port> or redis://<username>:<password>@<host>:<port>',
     devDefault: 'redis://127.0.0.1:6379',
@@ -47,5 +54,9 @@ export default cleanEnv(process.env, {
   RATE_LIMIT_ANONYMOUS: num({
     desc: 'Rate limit requests per window for anonymous users',
     default: 20,
+  }),
+  ALLOW_INSECURE_HTTP: bool({
+    desc: 'Allow insecure http connections',
+    default: false
   }),
 });

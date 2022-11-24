@@ -1,7 +1,7 @@
 // @ts-ignore
 import ParseServer, { RedisCacheAdapter } from 'parse-server';
 import config from './config';
-import MoralisEthAdapter from './auth/MoralisEthAdapter';
+import MoralisAuthAdapter from './auth/MoralisAuthAdapter';
 
 const redisClient = new RedisCacheAdapter({ url: process.env.REDIS_CONNECTION_STRING });
 
@@ -13,7 +13,7 @@ export const parseServer = new ParseServer({
   masterKey: config.MASTER_KEY,
   auth: {
     moralisEth: {
-      module: MoralisEthAdapter,
+      module: MoralisAuthAdapter,
     },
   },
   cacheAdapter: redisClient,
