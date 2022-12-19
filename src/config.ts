@@ -10,7 +10,7 @@ export default cleanEnv(process.env, {
 
   PORT: num({
     desc: 'Default port wher parse-server will run on',
-    default: 1337,
+    default: 8080,
   }),
   DATABASE_URI: str({
     desc: 'URI to your MongoDB database',
@@ -33,7 +33,7 @@ export default cleanEnv(process.env, {
   }),
   SERVER_URL: str({
     desc: 'Referenece to your server URL. Replace this when your app is hosted',
-    devDefault: 'http://localhost:1337/server',
+    devDefault: 'http://localhost:8080/server',
   }),
   SERVER_ENDPOINT: str({
     desc: 'Server endpoint for your parse-server',

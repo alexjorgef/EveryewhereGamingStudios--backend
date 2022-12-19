@@ -41,9 +41,10 @@ app.use(errorHandler);
 app.use(express.static('public'));
 
 const httpServer = http.createServer(app);
-httpServer.listen(config.PORT, () => {
+const port = parseInt(process.env.PORT ?? '') || 8080;
+httpServer.listen(port, () => {
   // eslint-disable-next-line no-console
-  console.log(`${config.APP_NAME} is running on port ${config.PORT}.`);
+  console.log(`${config.APP_NAME} is running on port ${port}.`);
 });
 // This will enable the Live Query real-time server
 ParseServer.createLiveQueryServer(httpServer);
