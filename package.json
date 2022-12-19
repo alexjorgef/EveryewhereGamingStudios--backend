@@ -39,5 +39,8 @@
     "format": "prettier --write 'src/**/*.{js,ts}'",
     "gen:cloud": "ts-node ./scripts/generateCloudCode.ts",
     "tsc": "tsc"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
